@@ -20,11 +20,18 @@ GROUP BY pickup_location_id
 ORDER BY NumberOfTimes DESC
 
 
--- Find the total number of trips
+-- Find the total number of unique trips
 
-SELECT *
-FROM 
--- Find the average fare amount by hour of the day
+SELECT COUNT(DISTINCT(trip_distance))
+FROM uber-proyectanalytics.uber_data_enginering.tbl_analytics
+
+
+-- Find the average fare amount by payment type
+
+SELECT AVG(fare_amount) AS AVGAmount, payment_type_name AS PaymentType
+FROM uber-proyectanalytics.uber_data_enginering.tbl_analytics
+GROUP BY paymentType
+ORDER BY AVGAmount DESC
 
 -- Creating the data Analysis table
 
